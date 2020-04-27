@@ -1,0 +1,29 @@
+{
+  "name": "chattylogger",
+  "version": "1.0.0",
+  "description": "Simple logger made for Chatty ",
+  "main": "tscomp/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lucia7777/chattylogger.git"
+  },
+  "keywords": [
+    "logger"
+  ],
+  "author": "lucia7777",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lucia7777/chattylogger/issues"
+  },
+  "homepage": "https://github.com/lucia7777/chattylogger#readme",
+  "devDependencies": {
+    "@types/node": "^13.13.4",
+    "typescript": "^3.8.3"
+  },
+  "dependencies": {
+    "util": "^0.12.2"
+  }
+}
