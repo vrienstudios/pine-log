@@ -1,39 +1,43 @@
-const util = require("util");
+const util = require('util');
 
 const addZero = (i: number): string => {
     let result: string = i.toString();
     if (i < 10) {
-        result = "0" + i;
+        result = '0' + i;
     }
     return result;
 };
 
 enum Levels {
-    "Fatal",
-    "Error",
-    "Warn",
-    "Info",
-    "Debug",
+    'Fatal',
+    'Error',
+    'Warn',
+    'Info',
+    'Debug',
 }
 
-const Reset = "\u001b[0m";
+const Reset = '\u001b[0m';
 
 export default class Logger {
-    constructor() {}
+    public production: Boolean = false;
+
+    constructor(production = false) {
+        this.production = production;
+    }
 
     public Colors = {
-        [Levels.Fatal]: "\u001b[41;1m",
-        [Levels.Error]: "\u001b[31m",
-        [Levels.Warn]: "\u001b[33m",
-        [Levels.Info]: "\u001b[36;1m",
-        [Levels.Debug]: "\u001b[38;5;239m",
+        [Levels.Fatal]: '\u001b[41;1m',
+        [Levels.Error]: '\u001b[31m',
+        [Levels.Warn]: '\u001b[33m',
+        [Levels.Info]: '\u001b[36;1m',
+        [Levels.Debug]: '\u001b[38;5;239m',
     };
 
     public formatFunction: Function = (level: Levels, message: any) =>
         `${this.Colors[level]}[${Levels[level]}] (${this.formatHour(
             new Date()
         )}): ${
-            typeof message !== "string" ? util.inspect(message) : message
+            typeof message !== 'string' ? util.inspect(message) : message
         }${Reset}\n`;
 
     public formatHour(date: Date) {
@@ -50,7 +54,9 @@ export default class Logger {
     }
 
     public debug(message: any) {
-        process.stdout.write(this.formatFunction(Levels.Debug, message));
+        if (!this.production) {
+            process.stdout.write(this.formatFunction(Levels.Debug, message));
+        }
     }
     public error(message: any) {
         process.stdout.write(this.formatFunction(Levels.Error, message));

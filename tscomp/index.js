@@ -1,10 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var util = require("util");
+var util = require('util');
 var addZero = function (i) {
     var result = i.toString();
     if (i < 10) {
-        result = "0" + i;
+        result = '0' + i;
     }
     return result;
 };
@@ -16,21 +16,24 @@ var Levels;
     Levels[Levels["Info"] = 3] = "Info";
     Levels[Levels["Debug"] = 4] = "Debug";
 })(Levels || (Levels = {}));
-var Reset = "\u001b[0m";
+var Reset = '\u001b[0m';
 var Logger = /** @class */ (function () {
-    function Logger() {
+    function Logger(production) {
         var _a;
         var _this = this;
+        if (production === void 0) { production = false; }
+        this.production = false;
         this.Colors = (_a = {},
-            _a[Levels.Fatal] = "\u001b[41;1m",
-            _a[Levels.Error] = "\u001b[31m",
-            _a[Levels.Warn] = "\u001b[33m",
-            _a[Levels.Info] = "\u001b[36;1m",
-            _a[Levels.Debug] = "\u001b[38;5;239m",
+            _a[Levels.Fatal] = '\u001b[41;1m',
+            _a[Levels.Error] = '\u001b[31m',
+            _a[Levels.Warn] = '\u001b[33m',
+            _a[Levels.Info] = '\u001b[36;1m',
+            _a[Levels.Debug] = '\u001b[38;5;239m',
             _a);
         this.formatFunction = function (level, message) {
-            return _this.Colors[level] + "[" + Levels[level] + "] (" + _this.formatHour(new Date()) + "): " + (typeof message !== "string" ? util.inspect(message) : message) + Reset + "\n";
+            return _this.Colors[level] + "[" + Levels[level] + "] (" + _this.formatHour(new Date()) + "): " + (typeof message !== 'string' ? util.inspect(message) : message) + Reset + "\n";
         };
+        this.production = production;
     }
     Logger.prototype.formatHour = function (date) {
         var hour = this.getHour(date);
@@ -44,7 +47,9 @@ var Logger = /** @class */ (function () {
         };
     };
     Logger.prototype.debug = function (message) {
-        process.stdout.write(this.formatFunction(Levels.Debug, message));
+        if (!this.production) {
+            process.stdout.write(this.formatFunction(Levels.Debug, message));
+        }
     };
     Logger.prototype.error = function (message) {
         process.stdout.write(this.formatFunction(Levels.Error, message));
