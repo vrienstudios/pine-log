@@ -65,4 +65,4 @@ var Logger = /** @class */ (function () {
     };
     return Logger;
 }());
-exports.default = Logger;
+exports = Logger;
