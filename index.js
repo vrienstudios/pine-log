@@ -1,5 +1,4 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 var util = require('util');
 var addZero = function (i) {
     var result = i.toString();
@@ -65,4 +64,4 @@ var Logger = /** @class */ (function () {
     };
     return Logger;
 }());
-exports = Logger;
+module.exports = Logger;
