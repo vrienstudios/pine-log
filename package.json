@@ -1,14 +1,14 @@
 {
-  "name": "chattylogger",
+  "name": "pine-log",
   "version": "1.0.0",
-  "description": "Simple logger made for Chatty ",
-  "main": "tscomp/index.js",
+  "description": "Fork of chattylogger without TypeScript",
+  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node test"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/lucia7777/chattylogger.git"
+    "url": "git+https://github.com/vrienstudios/pine-log.git"
   },
   "keywords": [
     "logger"
@@ -16,13 +16,10 @@
   "author": "lucia7777",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/lucia7777/chattylogger/issues"
+    "url": "https://github.com/vrienstudios/pine-log/issues"
   },
-  "homepage": "https://github.com/lucia7777/chattylogger#readme",
-  "devDependencies": {
-    "@types/node": "^13.13.4",
-    "typescript": "^3.8.3"
-  },
+  "homepage": "https://github.com/vrienstudios/pine-log#readme",
+  "devDependencies": {},
   "dependencies": {
     "util": "^0.12.2"
   }

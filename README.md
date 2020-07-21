@@ -1,10 +1,2 @@
-# ChattyLogger 
-Use 
-```javascript
-require('chattylogger/tscomp/index').default
-```
-for use in normal javascript and 
-```typescript
-import ChattyLogger from 'chattylogger'
-```
-for use in typescript
+# pine-log
+Fork of [chattylogger](https://github.com/lucia7777/chattylogger) without TypeScript
